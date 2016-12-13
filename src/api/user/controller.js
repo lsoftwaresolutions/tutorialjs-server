@@ -66,7 +66,7 @@ export const updatePassword = ({ bodymen: { body }, params, user }, res, next) =
         res.status(401).json({
           valid: false,
           param: 'password',
-          message: 'You can\'t change other user\'s password'
+          message: `You can't change other user's password`
         })
         return null
       }

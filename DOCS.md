@@ -135,9 +135,9 @@ Tutorial JS (Server / Backend)
 | access_token			| String			|  <p>Master access_token.</p>							|
 | email			| String			|  <p>User's email.</p>							|
 | password			| String			|  <p>User's password.</p>							|
-| login			| String			| **optional** <p>User's login.</p>							|
+| login			| String			|  <p>User's login.</p>							|
 | picture			| String			| **optional** <p>User's picture.</p>							|
-| role			| String			| **optional** <p>User's picture.</p>							|
+| role			| String			| **optional** <p>User's role.</p>							|
 
 ## Delete user
 
@@ -220,7 +220,9 @@ Tutorial JS (Server / Backend)
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>User access_token.</p>							|
-| login			| String			| **optional** <p>User's login.</p>							|
+| firstname			| String			| **optional** <p>User's first name.</p>							|
+| lastname			| String			| **optional** <p>User's last name.</p>							|
+| birthday			| String			| **optional** <p>User's birth date.</p>							|
 | picture			| String			| **optional** <p>User's picture.</p>							|
 
 
