@@ -17,8 +17,8 @@ export default (routes) => {
     app.use(morgan('dev'))
   }
 
-  app.use(bodyParser.urlencoded({ extended: false }))
-  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }))
+  app.use(bodyParser.json({ limit: '50mb' }))
   app.use(routes)
   app.use(queryErrorHandler())
   app.use(bodyErrorHandler())

@@ -2,6 +2,12 @@ import { Router } from 'express'
 import user from './user'
 import auth from './auth'
 import passwordReset from './password-reset'
+import course from './course'
+import section from './section'
+import level from './level'
+import news from './news'
+import review from './review'
+import tag from './tag'
 
 const router = new Router()
 
@@ -31,5 +37,11 @@ const router = new Router()
 router.use('/users', user)
 router.use('/auth', auth)
 router.use('/password-resets', passwordReset)
+router.use('/courses', course)
+router.use('/courses/:courseId/sections', section)
+router.use('/levels', level)
+router.use('/news', news)
+router.use('/reviews', review)
+router.use('/tags', tag)
 
 export default router

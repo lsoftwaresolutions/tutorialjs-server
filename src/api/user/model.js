@@ -42,8 +42,8 @@ const userSchema = new Schema({
     type: Date
   },
   levelId: {
-    type: Number,
-    default: 0
+    type: String,
+    ref: 'Level'
   },
   points: {
     type: Number,
@@ -104,7 +104,7 @@ userSchema.methods = {
     let fields = ['id', 'login', 'firstname', 'lastname']
 
     if (full) {
-      fields = [...fields, 'email', 'birthday', 'levelId', 'points', 'reputation', 'picture', 'createdAt', 'updatedAt']
+      fields = [...fields, 'email', 'birthday', 'levelId', 'points', 'reputation', 'role', 'picture', 'createdAt', 'updatedAt']
     }
 
     fields.forEach((field) => { view[field] = this[field] })

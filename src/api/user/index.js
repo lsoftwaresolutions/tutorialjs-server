@@ -58,7 +58,6 @@ router.get('/:id',
  * @apiParam {String{6..}} password User's password.
  * @apiParam {String} login User's login.
  * @apiParam {String} [picture] User's picture.
- * @apiParam {String=user,admin} [role=user] User's role.
  * @apiSuccess (Sucess 201) {Object} user User's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 401 Master access only.
@@ -66,7 +65,7 @@ router.get('/:id',
  */
 router.post('/',
   master(),
-  body({ email, password, login, picture, role }),
+  body({ email, password, login, picture }),
   create)
 
 /**
@@ -86,7 +85,7 @@ router.post('/',
  */
 router.put('/:id',
   token({ required: true }),
-  body({ firstname, lastname, birthday, picture }),
+  body({ firstname, lastname, birthday, role, picture }),
   update)
 
 /**
