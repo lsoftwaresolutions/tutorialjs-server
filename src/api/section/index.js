@@ -7,7 +7,7 @@ import { schema } from './model'
 export Section, { schema } from './model'
 
 const router = new Router({ mergeParams: true })
-const { courseId, name, description, order, levelId, isAvailable } = schema.tree
+const { course, name, description, order, level, isAvailable } = schema.tree
 
 /**
  * @api {post} /sections Create section
@@ -15,11 +15,11 @@ const { courseId, name, description, order, levelId, isAvailable } = schema.tree
  * @apiGroup Section
  * @apiPermission admin
  * @apiParam {String} access_token User access_token.
- * @apiParam courseId Section's courseId.
+ * @apiParam course Section's course.
  * @apiParam name Section's name.
  * @apiParam description Section's description.
  * @apiParam order Section's order.
- * @apiParam levelId Section's levelId.
+ * @apiParam level Section's level.
  * @apiParam isAvailable Section's isAvailable.
  * @apiSuccess {Object} section Section's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
@@ -27,7 +27,7 @@ const { courseId, name, description, order, levelId, isAvailable } = schema.tree
  */
 router.post('/',
   token({ required: true, roles: ['admin'] }),
-  body({ courseId, name, description, order, levelId, isAvailable }),
+  body({ course, name, description, order, level, isAvailable }),
   create)
 
 /**
@@ -59,11 +59,11 @@ router.get('/:id',
  * @apiGroup Section
  * @apiPermission admin
  * @apiParam {String} access_token User access_token.
- * @apiParam courseId Section's courseId.
+ * @apiParam course Section's course.
  * @apiParam name Section's name.
  * @apiParam description Section's description.
  * @apiParam order Section's order.
- * @apiParam levelId Section's levelId.
+ * @apiParam level Section's level.
  * @apiParam isAvailable Section's isAvailable.
  * @apiSuccess {Object} section Section's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
@@ -71,7 +71,7 @@ router.get('/:id',
  */
 router.put('/:id',
   token({ required: true, roles: ['admin'] }),
-  body({ courseId, name, description, order, levelId, isAvailable }),
+  body({ course, name, description, order, level, isAvailable }),
   update)
 
 /**

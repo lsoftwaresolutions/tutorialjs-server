@@ -41,8 +41,8 @@ const userSchema = new Schema({
   birthday: {
     type: Date
   },
-  levelId: {
-    type: String,
+  level: {
+    type: Schema.ObjectId,
     ref: 'Level'
   },
   points: {
@@ -104,7 +104,7 @@ userSchema.methods = {
     let fields = ['id', 'login', 'firstname', 'lastname']
 
     if (full) {
-      fields = [...fields, 'email', 'birthday', 'levelId', 'points', 'reputation', 'role', 'picture', 'createdAt', 'updatedAt']
+      fields = [...fields, 'email', 'birthday', 'level', 'points', 'reputation', 'role', 'picture', 'createdAt', 'updatedAt']
     }
 
     fields.forEach((field) => { view[field] = this[field] })
@@ -120,7 +120,7 @@ userSchema.methods = {
 userSchema.statics = {
   roles,
 
-  createFromService ({ service, id, email, login, firstname, lastname, birthday, levelId, points, reputation, picture }) {
+  createFromService ({ service, id, email, login, firstname, lastname, birthday, level, points, reputation, picture }) {
     return this.findOne({ $or: [{ [`services.${service}`]: id }, { email }] }).then((user) => {
       if (user) {
         user.services[service] = id
@@ -128,14 +128,14 @@ userSchema.statics = {
         user.firstname = firstname
         user.lastname = lastname
         user.birthday = birthday
-        user.levelId = levelId
+        user.level = level
         user.points = points
         user.reputation = reputation
         user.picture = picture
         return user.save()
       } else {
         const password = randtoken.generate(16)
-        return this.create({ services: { [service]: id }, email, password, login, firstname, lastname, birthday, levelId, points, reputation, picture })
+        return this.create({ services: { [service]: id }, email, password, login, firstname, lastname, birthday, level, points, reputation, picture })
       }
     })
   }

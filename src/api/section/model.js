@@ -1,8 +1,8 @@
 import mongoose, { Schema } from 'mongoose'
 
 const sectionSchema = new Schema({
-  courseId: {
-    type: String,
+  course: {
+    type: Schema.ObjectId,
     ref: 'Course'
   },
   name: {
@@ -15,8 +15,8 @@ const sectionSchema = new Schema({
     type: Number,
     default: 0
   },
-  levelId: {
-    type: String,
+  level: {
+    type: Schema.ObjectId,
     ref: 'Level'
   },
   isAvailable: {
@@ -40,11 +40,11 @@ sectionSchema.methods = {
     const view = {
       // simple view
       id: this.id,
-      courseId: this.courseId,
+      course: this.course,
       name: this.name,
       description: this.description,
       order: this.order,
-      levelId: this.levelId,
+      level: this.level,
       isAvailable: this.isAvailable,
       createdBy: this.createdBy,
       updatedBy: this.updatedBy,

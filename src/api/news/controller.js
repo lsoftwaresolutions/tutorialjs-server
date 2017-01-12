@@ -31,6 +31,8 @@ export const show = ({ params }, res, next) =>
 export const update = ({ bodymen: { body }, params, user }, res, next) => {
   res.updatedBy = user._id
   return News.findById(params.id)
+    .populate('createdBy', 'login')
+    .populate('updatedBy', 'login')
     .then(notFound(res))
     .then((news) => news ? _.merge(news, body).save() : null)
     .then((news) => news ? news.view(true) : null)

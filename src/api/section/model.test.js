@@ -3,7 +3,7 @@ import { Section } from '.'
 let section
 
 beforeEach(async () => {
-  section = await Section.create({ courseId: 'test', name: 'test', description: 'test', order: 'test', levelId: 'test', isAvailable: 'test' })
+  section = await Section.create({ course: 'test', name: 'test', description: 'test', order: 'test', level: 'test', isAvailable: 'test' })
 })
 
 describe('view', () => {
@@ -11,11 +11,11 @@ describe('view', () => {
     const view = section.view()
     expect(typeof view).toBe('object')
     expect(view.id).toBe(section.id)
-    expect(view.courseId).toBe(section.courseId)
+    expect(view.course).toBe(section.course)
     expect(view.name).toBe(section.name)
     expect(view.description).toBe(section.description)
     expect(view.order).toBe(section.order)
-    expect(view.levelId).toBe(section.levelId)
+    expect(view.level).toBe(section.level)
     expect(view.isAvailable).toBe(section.isAvailable)
     expect(view.createdBy).toBeTruthy()
     expect(view.updatedBy).toBeTruthy()
@@ -27,11 +27,11 @@ describe('view', () => {
     const view = section.view(true)
     expect(typeof view).toBe('object')
     expect(view.id).toBe(section.id)
-    expect(view.courseId).toBe(section.courseId)
+    expect(view.course).toBe(section.course)
     expect(view.name).toBe(section.name)
     expect(view.description).toBe(section.description)
     expect(view.order).toBe(section.order)
-    expect(view.levelId).toBe(section.levelId)
+    expect(view.level).toBe(section.level)
     expect(view.isAvailable).toBe(section.isAvailable)
     expect(view.createdBy).toBeTruthy()
     expect(view.updatedBy).toBeTruthy()

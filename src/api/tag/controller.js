@@ -31,6 +31,8 @@ export const show = ({ params }, res, next) =>
 export const update = ({ bodymen: { body }, params, user }, res, next) => {
   res.updatedBy = user._id
   return Tag.findById(params.id)
+    .populate('createdBy', 'login')
+    .populate('updatedBy', 'login')
     .then(notFound(res))
     .then((tag) => tag ? _.merge(tag, body).save() : null)
     .then((tag) => tag ? tag.view(true) : null)

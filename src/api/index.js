@@ -8,6 +8,16 @@ import level from './level'
 import news from './news'
 import review from './review'
 import tag from './tag'
+import itemsTag from './items-tag'
+import itemsType from './items-type'
+import item from './item'
+import chat from './chat'
+import message from './message'
+import question from './question'
+import answer from './answer'
+import playground from './playground'
+import usersPlayground from './users-playground'
+import usersQuestionsAnswer from './users-questions-answer'
 
 const router = new Router()
 
@@ -38,10 +48,20 @@ router.use('/users', user)
 router.use('/auth', auth)
 router.use('/password-resets', passwordReset)
 router.use('/courses', course)
-router.use('/courses/:courseId/sections', section)
+router.use('/courses/:course/sections', section)
+router.use('/courses/:course/sections/:section/items', item)
 router.use('/levels', level)
 router.use('/news', news)
 router.use('/reviews', review)
 router.use('/tags', tag)
+router.use('/items-tags', itemsTag)
+router.use('/items/types', itemsType)
+router.use('/chat', chat)
+router.use('/messages', message)
+router.use('/questions', question)
+router.use('/answers', answer)
+router.use('/playgrounds', playground)
+router.use('/users-playgrounds', usersPlayground)
+router.use('/users-questions-answers', usersQuestionsAnswer)
 
 export default router

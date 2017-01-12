@@ -7,7 +7,7 @@ import { schema } from './model'
 export Course, { schema } from './model'
 
 const router = new Router()
-const { name, description, image, order, levelId, isAvailable } = schema.tree
+const { name, description, image, order, level, isAvailable } = schema.tree
 
 /**
  * @api {post} /courses Create course
@@ -19,7 +19,7 @@ const { name, description, image, order, levelId, isAvailable } = schema.tree
  * @apiParam description Course's description.
  * @apiParam image Course's image.
  * @apiParam order Course's order.
- * @apiParam levelId Course's levelId.
+ * @apiParam level Course's level.
  * @apiParam isAvailable Course's availability.
  * @apiSuccess {Object} course Course's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
@@ -27,7 +27,7 @@ const { name, description, image, order, levelId, isAvailable } = schema.tree
  */
 router.post('/',
   token({ required: true, roles: ['admin'] }),
-  body({ name, description, image, order, levelId, isAvailable }),
+  body({ name, description, image, order, level, isAvailable }),
   create)
 
 /**
@@ -63,7 +63,7 @@ router.get('/:id',
  * @apiParam description Course's description.
  * @apiParam image Course's image.
  * @apiParam order Course's order.
- * @apiParam levelId Course's levelId.
+ * @apiParam level Course's level.
  * @apiParam isAvailable Course's availability.
  * @apiSuccess {Object} course Course's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
@@ -71,7 +71,7 @@ router.get('/:id',
  */
 router.put('/:id',
   token({ required: true, roles: ['admin'] }),
-  body({ name, description, image, order, levelId, isAvailable }),
+  body({ name, description, image, order, level, isAvailable }),
   update)
 
 /**

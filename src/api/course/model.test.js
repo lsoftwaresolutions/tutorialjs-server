@@ -3,7 +3,7 @@ import { Course } from '.'
 let course
 
 beforeEach(async () => {
-  course = await Course.create({ name: 'test', description: 'test', image: 'test', order: 'test', levelId: 'test', isAvailable: 'test' })
+  course = await Course.create({ name: 'test', description: 'test', image: 'test', order: 'test', level: 'test', isAvailable: 'test' })
 })
 
 describe('view', () => {
@@ -15,7 +15,7 @@ describe('view', () => {
     expect(view.description).toBe(course.description)
     expect(view.image).toBe(course.image)
     expect(view.order).toBe(course.order)
-    expect(view.levelId).toBe(course.levelId)
+    expect(view.level).toBe(course.level)
     expect(view.isAvailable).toBe(course.isAvailable)
     expect(view.createdBy).toBeTruthy()
     expect(view.updatedBy).toBeTruthy()
@@ -31,7 +31,7 @@ describe('view', () => {
     expect(view.description).toBe(course.description)
     expect(view.image).toBe(course.image)
     expect(view.order).toBe(course.order)
-    expect(view.levelId).toBe(course.levelId)
+    expect(view.level).toBe(course.level)
     expect(view.isAvailable).toBe(course.isAvailable)
     expect(view.createdBy).toBeTruthy()
     expect(view.updatedBy).toBeTruthy()

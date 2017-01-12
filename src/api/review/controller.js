@@ -13,7 +13,6 @@ export const create = ({ bodymen: { body }, user }, res, next) => {
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
   Review.find(query, select, cursor)
     .populate('createdBy', 'login firstname lastname')
-    .populate('updatedBy', 'login firstname lastname')
     .then((reviews) => reviews.map((review) => review.view()))
     .then(success(res))
     .catch(next)
@@ -21,7 +20,6 @@ export const index = ({ querymen: { query, select, cursor } }, res, next) =>
 export const show = ({ params }, res, next) =>
   Review.findById(params.id)
     .populate('createdBy', 'login firstname lastname')
-    .populate('updatedBy', 'login firstname lastname')
     .then(notFound(res))
     .then((review) => review ? review.view(true) : null)
     .then(success(res))
@@ -30,6 +28,7 @@ export const show = ({ params }, res, next) =>
 export const update = ({ bodymen: { body }, params, user }, res, next) => {
   res.updatedBy = user._id
   return Review.findById(params.id)
+    .populate('createdBy', 'login firstname lastname')
     .then(notFound(res))
     .then((result) => {
       if (!result) return null

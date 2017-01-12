@@ -14,8 +14,8 @@ const courseSchema = new Schema({
     type: Number,
     default: 0
   },
-  levelId: {
-    type: String,
+  level: {
+    type: Schema.ObjectId,
     ref: 'Level'
   },
   isAvailable: {
@@ -43,7 +43,7 @@ courseSchema.methods = {
       description: this.description,
       image: this.image,
       order: this.order,
-      levelId: this.levelId,
+      level: this.level,
       isAvailable: this.isAvailable,
       createdBy: this.createdBy,
       updatedBy: this.updatedBy,

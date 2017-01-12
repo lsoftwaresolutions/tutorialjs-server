@@ -31,6 +31,8 @@ export const show = ({ params }, res, next) =>
 export const update = ({ bodymen: { body }, params, user }, res, next) => {
   res.updatedBy = user._id
   return Level.findById(params.id)
+    .populate('createdBy', 'login')
+    .populate('updatedBy', 'login')
     .then(notFound(res))
     .then((level) => level ? _.merge(level, body).save() : null)
     .then((level) => level ? level.view(true) : null)

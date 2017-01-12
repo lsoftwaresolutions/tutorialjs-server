@@ -13,14 +13,14 @@ beforeEach(async () => {
 test('POST /courses 201', async () => {
   const { status, body } = await request(app())
     .post('/')
-    .send({ name: 'test', description: 'test', image: 'test', order: 'test', levelId: 'test', isAvailable: 'test', createdBy: 'test', updatedBy: 'test' })
+    .send({ name: 'test', description: 'test', image: 'test', order: 'test', level: 'test', isAvailable: 'test', createdBy: 'test', updatedBy: 'test' })
   expect(status).toBe(201)
   expect(typeof body).toEqual('object')
   expect(body.name).toEqual('test')
   expect(body.description).toEqual('test')
   expect(body.image).toEqual('test')
   expect(body.order).toEqual('test')
-  expect(body.levelId).toEqual('test')
+  expect(body.level).toEqual('test')
   expect(body.isAvailable).toEqual('test')
   expect(body.createdBy).toEqual('test')
   expect(body.updatedBy).toEqual('test')
@@ -50,7 +50,7 @@ test('GET /courses/:id 404', async () => {
 test('PUT /courses/:id 200', async () => {
   const { status, body } = await request(app())
     .put(`/${course.id}`)
-    .send({ name: 'test', description: 'test', image: 'test', order: 'test', levelId: 'test', isAvailable: 'test', createdBy: 'test', updatedBy: 'test' })
+    .send({ name: 'test', description: 'test', image: 'test', order: 'test', level: 'test', isAvailable: 'test', createdBy: 'test', updatedBy: 'test' })
   expect(status).toBe(200)
   expect(typeof body).toEqual('object')
   expect(body.id).toEqual(course.id)
@@ -58,7 +58,7 @@ test('PUT /courses/:id 200', async () => {
   expect(body.description).toEqual('test')
   expect(body.image).toEqual('test')
   expect(body.order).toEqual('test')
-  expect(body.levelId).toEqual('test')
+  expect(body.level).toEqual('test')
   expect(body.isAvailable).toEqual('test')
   expect(body.createdBy).toEqual('test')
   expect(body.updatedBy).toEqual('test')
@@ -67,7 +67,7 @@ test('PUT /courses/:id 200', async () => {
 test('PUT /courses/:id 404', async () => {
   const { status } = await request(app())
     .put('/123456789098765432123456')
-    .send({ name: 'test', description: 'test', image: 'test', order: 'test', levelId: 'test', isAvailable: 'test', createdBy: 'test', updatedBy: 'test' })
+    .send({ name: 'test', description: 'test', image: 'test', order: 'test', level: 'test', isAvailable: 'test', createdBy: 'test', updatedBy: 'test' })
   expect(status).toBe(404)
 })
 

@@ -15,6 +15,7 @@ export const index = ({ querymen: { query, select, cursor } }, res, next) =>
   Course.find(query, select, cursor)
     .populate('createdBy', 'login')
     .populate('updatedBy', 'login')
+    .populate('level', 'name description color')
     .then((courses) => courses.map((course) => course.view()))
     .then(success(res))
     .catch(next)
@@ -23,6 +24,7 @@ export const show = ({ params }, res, next) =>
   Course.findById(params.id)
     .populate('createdBy', 'login')
     .populate('updatedBy', 'login')
+    .populate('level', 'name description color')
     .then(notFound(res))
     .then((course) => course ? course.view(true) : null)
     .then(success(res))
@@ -31,6 +33,9 @@ export const show = ({ params }, res, next) =>
 export const update = ({ bodymen: { body }, params, user }, res, next) => {
   res.updatedBy = user._id
   return Course.findById(params.id)
+    .populate('createdBy', 'login')
+    .populate('updatedBy', 'login')
+    .populate('level', 'name description color')
     .then(notFound(res))
     .then((course) => course ? _.merge(course, body).save() : null)
     .then((course) => course ? course.view(true) : null)
